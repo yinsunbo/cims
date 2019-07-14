@@ -1,0 +1,216 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+/* 创建三个列 */
+.column1 {
+  float: left;
+  width: 20%;
+  visibility:hidden;
+}
+.column2{
+  float: left;
+  width: 60%;
+}
+.column3 {
+  float: left;
+  width: 20%;
+  visibility:hidden;
+}
+.movie{
+
+    width:19%;
+    height:30%;
+    float: left;
+    border:1px solid #000;
+    margin:2px;
+}
+/* 列后清除浮动 */
+.row:after {
+  content: "";
+  display: table;
+  
+}
+img{
+
+width:200px;
+height:300px;
+}
+.security-right{
+    float: left;
+    width: 600px;
+    height:100%;
+    border-left: 1px solid #ddd;
+    background: #fff;
+    min-height: 890px!important;
+}
+.security-right-title{
+	height: 50px;
+    padding-left: 30px;
+    border-bottom: 1px solid #ddd;
+}
+.security-right-title-icon{
+	float: left;
+    width: 4px;
+    height: 16px;
+    margin-top: 18px;
+    background-color: #00a1d6;
+    border-radius: 4px;
+}
+.security-right-title-text{
+	float: left;
+    margin: 15px 0 0 5px;
+    color: #00a1d6;
+    font-size: 16px;
+    cursor: default;
+	
+}
+.security_content{
+	overflow: hidden;
+    width: 600px;
+    height: 50%;
+    margin: 10px auto 100px;
+    border: 1px solid #e1e2e5;
+    box-shadow: 0 2px 4px rgba(0,0,0,.14);
+    background: #fafafa;
+    border-radius: 4px;
+}
+.user-setting-warp{
+	padding: 20px 20px 0;
+    position: relative;
+}
+.clearfix{
+	margin: 0;
+    padding: 0;
+	display: block;
+}
+.el-form-item {
+    margin-bottom: 22px;
+}
+.user-local, .user-my-aim, .user-my-btn, .user-my-date, .user-my-love, .user-my-sex, .user-my-sign, .user-nick-name, .user-nick-rel-name {
+    float: left;
+    width: 900px;
+}
+.el-form-item__label {
+    width: 95px;
+    text-align: right;
+    margin-right: 20px;
+    float: left;
+    line-height: 30px;
+    padding: 0;
+}
+.user-nick-name .el-input, .user-nick-name .el-input__inner {
+    float: left;
+    width: 330px;
+    height: 30px;
+    margin-right: 40px;
+}
+.user-my-btn{
+    float: left;
+    width: 100%;
+}
+.el-form-item__content {
+    line-height: 30px;
+    position: relative;
+    font-size: 14px;
+}
+.padding-dom {
+    width: 789px;
+    height: 39px;
+    border-bottom: 1px solid #e5e9ef;
+    margin-bottom: 40px;
+}
+.user-my-btn-warp {
+    float: left;
+    width: 600px;
+    height: 36px;
+    position: relative;
+}
+.el-button--primary {
+    width: 110px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+    background: #00a1d6!important;
+}
+.security-right-title-tips{
+    float: left;
+    margin: 15px 0 0 5px;
+    color: #00a1d6;
+    font-size: 50px;
+    cursor: default;
+    
+}
+.security-right-icon{
+    float: left;
+    width: 6px;
+    height: 60px;
+    margin-top: 18px;
+    background-color: #00a1d6;
+    border-radius: 4px;
+}
+.comment-title{
+	float: left;
+	margin-left:250px;
+	color: #00a1d6;
+	font-size: 30px;
+}
+.comment-list .list-item .info{
+	padding-top: 20px;
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+.content{
+	position: relative;
+    padding: 22px 0 14px;
+    border-top: 1px solid #e5e9ef;
+    
+}
+.sty{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+}
+.security-left{
+    float: left;
+    width: 150px;
+    height: 100%;
+    overflow: hidden;
+}
+.security-title{
+    display: block;
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 16px;
+    color: #99a2aa;
+    cursor: default;
+    border-bottom: 1px solid #e1e2e5;
+}
+.security-ul {
+    border-bottom: 1px solid #e1e2e5;
+}
+.security-list {
+    width: 150px;
+    height: 48px;
+    line-height: 48px;
+}
+.security-nav-name {
+    margin-left: 12px;
+    font-size: 14px;
+    color: #222;
+}
+.on{
+    background-color: #00a1d7!important;
+}

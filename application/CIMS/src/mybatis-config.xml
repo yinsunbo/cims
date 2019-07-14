@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- 在映射文件件中可以直接使用Course表示entity.Course -->
+	<typeAliases>
+	   <typeAlias type="entity.Customer" alias="Customer" />
+		<typeAlias type="entity.User" alias="User" />
+		<typeAlias type="entity.UserCinema" alias="UserCinema" />
+		<typeAlias type="entity.Cinema" alias="Cinema" />
+		<typeAlias type="entity.Page" alias="Page" />
+		<typeAlias type="entity.Scene" alias="Scene" />
+		<typeAlias type="entity.Seat" alias="Seat" />
+		<typeAlias type="entity.Media" alias="Media" />
+		<typeAlias type="entity.Movie" alias="Movie" />
+		<typeAlias type="entity.Type" alias="Type" />
+		<typeAlias type="entity.Order" alias="Order" />
+		<typeAlias type="entity.Comment" alias="Comment" />
+	</typeAliases>
+	<mappers>
+		<mapper  resource="entity/MediaMapper.xml"/>
+		<mapper  resource="entity/SceneMapper.xml"/>
+		<mapper  resource="entity/MovieMapper.xml"/>
+		<mapper  resource="entity/SeatMapper.xml"/>
+		<mapper  resource="entity/CinemaMapper.xml"/>
+		<mapper  resource="entity/UserMapper.xml"/>
+		<mapper  resource="entity/TypeMapper.xml"/>
+		<mapper  resource="entity/CustomerMapper.xml"/>
+		<mapper  resource="entity/OrderMapper.xml"/>
+		<mapper  resource="entity/CommentMapper.xml"/>
+	</mappers>
+	
+</configuration>

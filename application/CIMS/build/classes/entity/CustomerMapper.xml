@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.CustomerMapper">
+    
+	<insert id="regCustomer" parameterType="Customer" useGeneratedKeys="true" keyProperty="customer_id">
+	   insert into t_customer 
+	   values(#{customer_id},#{customer_name},#{customer_password},#{customer_phone},#{customer_email})
+	</insert>
+	
+	<select id="isPhone" resultType="int" >
+       select count(customer_id) from t_customer where customer_phone = #{customer_phone}
+    </select>
+    <select id="loginCustomer" parameterType="Customer" resultType="Customer">
+    select customer_id,customer_name from t_customer where 
+    customer_phone = #{customer_phone } and customer_password = #{customer_password }
+    </select>
+    <select id="findCustomer" resultType="Customer">
+    select * from t_customer where customer_id=#{customer_id}
+    </select>
+    <update id="updateCustomer" parameterType="Customer">
+    update t_customer set customer_name=#{customer_name},customer_email=#{customer_email},customer_password=#{customer_password} 
+    where customer_id=#{customer_id}
+    </update>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.SeatMapper">
+	<select id="getSeat" resultType="Seat">
+		select * from t_seat where cinema_id=#{cinema_id} order by seat_id desc limit 10
+	</select>
+	<select id="findSeat" resultType="Seat">
+		select * from t_seat where seat_id=#{seat_id}
+	</select>
+	<insert id="addSeat" parameterType="Seat">
+		insert into t_seat
+		values(#{seat_name},#{seat_id},#{seat_map},#{cinema_id},#{seat_row},#{seat_column})
+	</insert>
+	<delete id="deleteSeat">
+		delete from t_seat where seat_id=#{seat_id}
+	</delete>
+	<update id="updateSeatMap" parameterType="Seat">
+		update t_seat 
+		set seat_map=#{seat_map},seat_row=#{seat_row},seat_column=#{seat_column}
+		where seat_id=#{seat_id}
+	</update>
+	<select id="countSeat" resultType="int">
+		select count(*) from t_seat where cinema_id=#{cinema_id}
+	</select>
+
+	<select id="selectSeat" resultType="Seat">
+		select * from t_seat
+	</select>
+	<select id="seatPage" resultType="Seat" parameterType="Page">
+		select * from t_seat where cinema_id=#{id} order by seat_id desc limit #{start},#{size}
+	</select>
+	<update id="updateSeatName" parameterType="Seat">
+	   update t_seat set seat_name=#{seat_name} where seat_id=#{seat_id}
+	</update>
+
+	
+</mapper>

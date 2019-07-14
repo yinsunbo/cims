@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.CinemaMapper">
+	<select id="addUserCinema"  resultType="Cinema">
+  	select cinema_id,cinema_name from t_cinema 
+  	</select>
+	<select id="cinemaList" resultType="Cinema">
+	select * from t_cinema order by cinema_id desc limit 10
+	</select>
+	<select id="getCinema" resultType="Cinema">
+    select * from t_cinema order by cinema_id desc 
+    </select>
+	<select id="countCinema" resultType="int">
+	select count(cinema_id) from t_cinema
+	</select>
+	<select id="cinemaPage" resultType="Cinema" parameterType="Page">
+		select * from t_cinema order by cinema_id desc limit #{start},#{size}
+	</select>
+	<insert id="addCinema" parameterType="Cinema">
+	insert into t_cinema
+	values(#{cinema_id},#{cinema_name},#{location},#{tel})
+	</insert>
+	<delete id="deleteCinema" >
+	delete from t_cinema where cinema_id=#{cinema_id}
+	</delete>
+	<select id="findCinema" resultType="Cinema">
+	select * from t_cinema where  cinema_id=#{cinema_id}
+	</select>
+	<update id="updateCinema" parameterType="Cinema">
+	update t_cinema
+	set cinema_name=#{cinema_name},location=#{location},tel=#{tel}
+	where cinema_id=#{cinema_id}
+	</update>
+	
+</mapper>

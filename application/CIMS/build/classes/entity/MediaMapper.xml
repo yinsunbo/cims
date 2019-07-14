@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.MediaMapper">
+	<select id="getMedia" resultType="Media">
+	select * from t_media order by media_time desc
+	</select>
+ 	<insert id="addMedia" parameterType="Media">
+ 	insert into t_media
+  	values(#{media_id},#{media_name},#{media_type},#{media_url},#{media_introduce},#{media_time},#{media_size})
+ 	</insert>
+ 	<select id="findMedia" resultType="Media">
+ 	select * from t_media where media_id = #{media_id}
+ 	</select>
+ 	
+ 	<select id="getVideoMedia" resultType="Media">
+	select * from t_media where media_type='视频' order by media_time desc
+	</select>
+	
+	<select id="getImgMedia" resultType="Media">
+	select * from t_media where media_type='图片' order by media_time desc
+	</select>
+	<select id="lookup" resultType="Media" >
+	select * from t_media where media_name like #{keyword}
+	</select>
+	
+	<delete id="deleteMedia">
+	delete from t_media where media_id=#{media_id}
+	</delete>
+</mapper>

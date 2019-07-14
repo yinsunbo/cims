@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.UserMapper">
+
+	<select id="count" resultType="int">
+	select count(noId) from s_user where power=1
+	</select>
+	
+	<select id="login"  parameterType="User" resultType="User">
+  	select * from s_user where noId=#{noId} and userPassword=#{userPassword} 
+  	</select>
+  	
+  	
+	<select id="userList" resultType="UserCinema">
+	select s_user.*,t_cinema.cinema_name from s_user join t_cinema on s_user.cinema_id=t_cinema.cinema_id where power=1 order by noId desc limit 15
+	</select>
+	<select id="userPage" resultType="UserCinema" parameterType="Page">
+		select s_user.*,t_cinema.cinema_name from s_user join t_cinema on s_user.cinema_id=t_cinema.cinema_id where power=1 order by noId desc limit #{start},#{size}
+	</select>
+	
+	
+	<select id="findUser" resultType="UserCinema">
+	select s_user.*,t_cinema.cinema_name from s_user 
+	join t_cinema on s_user.cinema_id=t_cinema.cinema_id where noId=#{noId}
+	</select>
+	<insert id="addUser"  parameterType="User">
+	insert into s_user 
+	values(#{userName},#{noId},#{userPassword},1,#{cinema_id},#{tel},#{sex},#{email},#{age},#{seniority})
+	</insert>
+	
+	<delete id="deleteUser" >
+	delete from s_user where noId=#{noId }
+	</delete>
+	<update id="updateUser"  parameterType="User">
+	update s_user
+	set userName=#{userName},sex=#{sex},userPassword=#{userPassword},cinema_id=#{cinema_id},tel=#{tel},email=#{email},age=#{age},seniority=#{seniority}
+	where noId=#{noId}
+	</update>
+</mapper>

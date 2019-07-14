@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.SceneMapper">
+	<insert id="addScene" parameterType="Scene">
+	insert into t_scene
+	values(#{scene_id},#{scene_name},#{scene_date},#{start_time},#{end_time},#{seat_id},#{movie_id},#{cinema_id},#{price})
+	</insert>
+	<select id="sceneList" resultType="Scene">
+	select * from t_scene limit 15
+	</select>
+	<select id="findScene" resultType="Scene" >
+	select * from t_scene where scene_id=#{scene_id}
+	</select>
+	<delete id="deleteScene">
+	delete from t_scene where scene_id=#{scene_id}
+	</delete>
+	<update id="updateScene" parameterType="Scene">
+	update t_scene
+	set scene_name=#{scene_name},scene_date=#{scene_date},start_time=#{start_time},
+	end_time=#{end_time},seat_id=#{seat_id},movie_id=#{movie_id},price=#{price}
+	where scene_id=#{scene_id}
+	</update>
+	<select id="movieFind"  resultType="Scene">
+	select * from t_scene where movie_id=#{movie_id}
+	</select>
+	<select id="cinemaFind" resultType="int">
+	select scene_id from t_scene where cinema_id = #{cinema_id}
+	</select>
+	<select id="movieFindDate" resultType="Scene">
+	select * from t_scene where movie_id=#{movie_id} and scene_date >=#{time}
+	</select>
+</mapper>

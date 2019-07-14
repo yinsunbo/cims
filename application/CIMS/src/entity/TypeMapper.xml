@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.TypeMapper">
+	<select id="getType" resultType="Type">
+	   select * from t_type
+	</select>
+	<insert id="addType" parameterType="Type" useGeneratedKeys="true" keyProperty="type_id">
+	   insert into t_type values(#{type_id},#{type_name})
+	</insert>
+	<select id="findType" resultType="int" >
+	   select count(type_id) from t_type where type_name = #{type_name}
+	</select>
+	<update id="updateType" parameterType="Type" >
+	   update t_type set type_name = #{type_name} where type_id = #{type_id}
+	</update>
+	<delete id="deleteType" >
+	   delete from t_type where type_id = #{type_id}
+	</delete>
+	
+</mapper>

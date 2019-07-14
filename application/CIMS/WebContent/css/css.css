@@ -1,0 +1,24 @@
+.pointer{
+	cursor:pointer;
+}
+.underline{
+	text-decoration:underline;
+}
+.underline-none{
+	text-decoration:none;
+}
+.font-black{
+	color:#000;
+}
+.clear{
+	float:clear;
+}
+#loginDiv{
+	display:block;
+}
+#zhuceDiv{
+	display:none;
+}
+.inputTouming{
+	background:rgba(255,255,255,0.8);
+}

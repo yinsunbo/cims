@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.CommentMapper">
+	<insert id="addComment" parameterType="Comment">
+	insert into t_comment
+	values(#{comment_id},#{comment_title},#{comment_content},#{comment_time},#{customer_id},#{movie_id})
+	</insert>
+	<select id="getComment" resultType="Comment">
+	select c1.*,c2.customer_name from t_comment c1 left join t_customer c2 on c1.customer_id = c2.customer_id where movie_id=#{movie_id} order by comment_time desc limit 10;
+	</select>
+	<select id="getCommentList" resultType="Comment">
+	select c1.*,c2.customer_name from t_comment c1 left join t_customer c2 on c1.customer_id = c2.customer_id where movie_id=#{movie_id} order by comment_time;
+	</select>
+	<select id="getMyComment" resultType="Comment">
+	select * from t_comment where customer_id = #{customer_id}
+	</select>
+	<delete id="delComment">
+	delete from t_comment where comment_id=#{comment_id}
+	</delete>
+	<select id="findComment" resultType="Comment">
+	select * from t_comment where comment_id=#{comment_id}
+	</select>
+</mapper>

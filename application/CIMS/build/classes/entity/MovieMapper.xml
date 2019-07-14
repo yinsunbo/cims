@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.MovieMapper">
+
+	<select resultType="Movie" id="getMovie">
+	select * from t_movie order by movie_id desc limit 15
+	</select>
+	
+	<select id="countMovie" resultType="int">
+	select count(movie_id) from t_movie
+	</select>
+	<select resultType="Movie" id="moviePage" parameterType="Page">
+	select * from t_movie order by movie_id desc limit #{start},#{size}
+	</select>
+	
+	<insert id="addMovie" parameterType="Movie">
+	insert into t_movie
+	values(#{movie_id},#{movie_name},#{type_id},#{movie_introduce},#{movie_language},#{movie_date},#{key_word},#{img_url})
+	</insert>
+	
+	<delete id="deleteMovie">
+	delete from t_movie where movie_id=#{movie_id}
+	</delete>
+	
+	<select id="findMovie" parameterType="int" resultType="Movie">
+	select * from t_movie where movie_id=#{movie_id}
+	</select>
+	<update id="updateMovie" parameterType="Movie">
+	update t_movie
+	set movie_name=#{movie_name},type_id=#{type_id},movie_introduce=#{movie_introduce},
+	movie_language=#{movie_language},movie_date=#{movie_date},key_word=#{key_word},img_url=#{img_url}
+	where movie_id=#{movie_id}
+	</update>
+	
+	<select id="selectMovie" resultType="Movie">
+	select movie_id,movie_name from t_movie order by  movie_id desc
+	</select>
+	<select id="getMovieType" resultType="Movie">
+	select * from t_movie where type_id=#{type_id}
+	</select>
+	<select id="searchMovie" resultType="Movie">
+	select * from t_movie where movie_name like #{movie_name}
+	</select>
+</mapper>

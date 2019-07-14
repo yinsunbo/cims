@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD 
+ Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace实际上接口的名字 -->
+<mapper namespace="mapper.OrderMapper">
+    <insert id="addOrder" parameterType="Order" useGeneratedKeys="true" keyProperty="order_id">
+    insert into t_order 
+    values(#{order_id},#{order_time},#{seat_location},#{scene_id},#{order_state},#{customer_id},#{order_price})
+    </insert>
+    <select id="findOrder" resultType="Order">
+    select * from t_order where order_id = #{order_id}
+    </select>
+    <select id="selectedSeat" resultType="String">
+    select seat_location from t_order where scene_id=#{scene_id} and order_state=1
+    </select>
+    <select id="getOrder" resultType="Order">
+    select * from t_order where customer_id = #{customer_id}
+    </select>
+    <update id="payOrder" parameterType="int">
+    update t_order set order_state=1 where order_id=#{order_id}
+    </update>
+    <select id="sceneFind" resultType="Order">
+    select * from t_order where scene_id=#{scene_id} and order_state=1
+    </select>
+    <select id="getCount" resultType="String">
+    select sum(order_price) from 
+    t_order o left join t_scene s 
+    on o.scene_id = s.scene_id 
+    where o.order_state=1 and cinema_id=#{cinema_id};
+    </select>
+    <select id="getCountDate" resultType="String">
+    select sum(order_price) from
+    t_order o left join t_scene s 
+    on o.scene_id = s.scene_id 
+    where o.order_state=1 and cinema_id=#{cinema_id} and order_time > #{date}
+    </select>
+</mapper>
